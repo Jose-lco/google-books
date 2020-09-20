@@ -4,12 +4,10 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { BookList, BookListItem } from "../components/BookList"
 import { Input, FormBtn } from "../components/Form";
-
 function Search() {
   // Setting our component's initial state
   const [books, setBooks] = useState([])
   const [bookSearch, setBookSearch] = useState("")
-
   
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -17,8 +15,6 @@ function Search() {
     setBookSearch(value)
   };
 
-  // When the form is submitted, use the API.saveBook method to save the book data
-  // Then reload books from the database
   function handleFormSubmit(event) {
     event.preventDefault();
     API.search(bookSearch).then(res => {
