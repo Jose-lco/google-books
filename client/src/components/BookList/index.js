@@ -17,25 +17,29 @@ export function BookListItem({
   const [formObject, setFormObject] = useState({
     title: "",
     author: "",
-    synopsis: ""
+    synopsis: "",
+    href:""
   })
   function addBooksToDatabase(event){
     event.preventDefault();
     setFormObject({
       title,
       author,
-      synopsis: description
+      synopsis: description,
+      href,
     })
     if (formObject.title && formObject.author) {
       API.saveBook({
         title: formObject.title,
         author: formObject.author,
-        synopsis: formObject.synopsis
+        synopsis: formObject.synopsis,
+        href: formObject.href
       })
         .then(() => setFormObject({
           title: "",
           author: "",
-          synopsis: ""
+          synopsis: "",
+          href: ""
         }))
         .then(() => {
           console.log("added")
