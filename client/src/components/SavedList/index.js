@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Thumbnail from "../Thumbnail";
 import { Container, Row, Col } from "../Grid";
-import API from "../../utils/API"
-import DeleteBtn from "../DeleteBtn";
 export function SavedList({ children }) {
   return <ul className="list-group">{children}</ul>;
 }
@@ -15,11 +13,7 @@ export function SavedListItem({
   href, 
   author
 }) {
-  const [formObject, setFormObject] = useState({
-    title: "",
-    author: "",
-    synopsis: ""
-  })
+  
   
   return (
     <li className="list-group-item">
@@ -34,7 +28,6 @@ export function SavedListItem({
             <a rel="noreferrer noopener" target="_blank" href={href}>
               Go read more!
             </a>
-            <DeleteBtn />
           </Col>
         </Row>
       </Container>
