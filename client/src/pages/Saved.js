@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import { SavedList, SavedListItem } from "../components/SavedList";
-import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
 const Saved = () => {
     const [books, setBooks] = useState([])
@@ -21,12 +20,6 @@ const Saved = () => {
             .catch(err => console.log(err));
     };
 
-    // Deletes a book from the database with a given id, then reloads books from the db
-    function deleteBook(id) {
-        API.deleteBook(id)
-            .then(res => loadBooks())
-            .catch(err => console.log(err));
-    }
 
     return (
         <Container fluid>
@@ -43,8 +36,8 @@ const Saved = () => {
                                         title={book.title}
                                         author={book.author}
                                         description={book.synopsis}>
-                                        <DeleteBtn onClick={() => deleteBook(book._id)} />
                                     </SavedListItem>
+                                    
                                 );
                             })}
                         </SavedList>

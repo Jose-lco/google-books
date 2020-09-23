@@ -17,29 +17,25 @@ export function BookListItem({
   const [formObject, setFormObject] = useState({
     title: "",
     author: "",
-    synopsis: "",
-    href:""
+    synopsis: ""
   })
   function addBooksToDatabase(event){
     event.preventDefault();
     setFormObject({
       title,
       author,
-      synopsis: description,
-      href,
+      synopsis: description
     })
     if (formObject.title && formObject.author) {
       API.saveBook({
         title: formObject.title,
         author: formObject.author,
-        synopsis: formObject.synopsis,
-        href: formObject.href
+        synopsis: formObject.synopsis
       })
         .then(() => setFormObject({
           title: "",
           author: "",
           synopsis: "",
-          href: ""
         }))
         .then(() => {
           console.log("added")
@@ -60,7 +56,7 @@ export function BookListItem({
             <a rel="noreferrer noopener" target="_blank" href={href}>
               Go read more!
             </a>
-            <button className="btn btn-default" onClick={addBooksToDatabase}> Add to List</button>
+            <button type="button" className="btn btn-secondary" onClick={addBooksToDatabase}> Add to List</button>
           </Col>
         </Row>
       </Container>
